@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+/* Custom CSS */
+/* .menuCol {
+  height: 20rem !important;
+} */
+.cardMenu {
+  height: 20rem !important;
+}
