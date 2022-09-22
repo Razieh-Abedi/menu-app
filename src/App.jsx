@@ -1,25 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
-import menuData from "./menuData";
+import items from "./data";
 import Categories from "./Categories";
 import Menu from "./Menu";
 import "bootstrap/dist/css/bootstrap.min.css";
+const allCategories = ["all", ...new Set(items.map((item) => item.category))];
 
 function App() {
+  const [menuItems, setMenuItems] = useState(items);
+  const [categories, setCategories] = useState(allCategories);
+  const filterMenuItems = (category) => {
+    if (category === "all") {
+      setMenuItems(items);
+    } else {
+      const newItems = items.filter((item) => item.category === category);
+      setMenuItems(newItems);
+    }
+  };
   return (
-    <div className="App">
-      <header>Our Menu</header>
-      <hr />
+    <div className="container my-5">
+      <header className="text-center display-5">Our Menu</header>
+      <hr className="d-block mx-auto w-50 mb-3" />
       <main>
         <div>
-          <Categories />
+          <Categories
+            categories={categories}
+            filterMenuItems={filterMenuItems}
+          />
         </div>
         <div className="container">
-          <div className="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-2 g-md-4">
-          {menuData.map((item) => {
-            return <Menu id={item.id} {...item} />;
-          })}
-          </div>
+          <Menu items={menuItems} />
         </div>
       </main>
     </div>
