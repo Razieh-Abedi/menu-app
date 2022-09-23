@@ -18,9 +18,11 @@ function App() {
     }
   };
   return (
-    <div className="container my-5">
-      <header className="text-center display-5">Our Menu</header>
-      <hr className="d-block mx-auto w-50 mb-3" />
+    <div className="container my-3">
+      <header>
+        <h1 className="text-center display-5">Our Menu</h1>
+        <hr className="d-block mx-auto w-50 mb-3" />
+      </header>
       <main>
         <div>
           <Categories
@@ -28,10 +30,20 @@ function App() {
             filterMenuItems={filterMenuItems}
           />
         </div>
-        <div className="container">
+        <div className="container my-4">
           <Menu items={menuItems} />
         </div>
       </main>
+      <footer className="text-center">
+        <a
+          href="https://raziwebdeveloper.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className=" text-decoration-none text-black"
+        >
+          Developed with ❤ by raziwebdeveloper.com
+        </a>
+      </footer>
     </div>
   );
 }
